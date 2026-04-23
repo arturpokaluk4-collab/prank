@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+  margin:0;
+  background:black;
+  color:white;
+  font-family:Arial;
+  text-align:center;
+}
+
+#login{
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+
+input{
+  padding:10px;
+  font-size:18px;
+}
+
+button{
+  padding:10px;
+  margin-top:10px;
+}
+
+#text{
+  position:fixed;
+  top:20%;
+  width:100%;
+  font-size:30px;
+  color:red;
+  display:none;
+}
+
+video{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div id="login">
+  <h2>Введите пароль</h2>
+  <input id="pass">
+  <br>
+  <button onclick="check()">Войти</button>
+  <p id="msg"></p>
+</div>
+
+<div id="text">ДАНИЛ ЛОХ 😂<br>ЭТО ПРАНК</div>
+
+<video id="vid" playsinline>
+  <source src="video.mp4" type="video/mp4">
+</video>
+
+<script>
+let correct = "1234";
+
+function check(){
+  let input = document.getElementById("pass").value;
+
+  if(input === correct){
+    start();
+  } else {
+    document.getElementById("msg").innerHTML = "Неверно";
+  }
+}
+
+function start(){
+  document.getElementById("login").style.display="none";
+
+  let v = document.getElementById("vid");
+  v.style.display="block";
+
+  document.getElementById("text").style.display="block";
+
+  v.play().catch(()=>{});
+  document.documentElement.requestFullscreen?.();
+}
+</script>
+
+</body>
+</html>
